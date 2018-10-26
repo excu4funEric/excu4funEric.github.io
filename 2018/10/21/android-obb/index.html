@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Cocos2d-x3.10使用obb扩展包 | excu4funEric</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="excu4fun,Eric's Blog" />
+  
+  <meta name="description" content="一. 创建Obb文件并模拟下载环境1.1 Obb文件命名规则根据google官方的OBB文件命名规则来创建Obb文件：12&amp;lt;main|patch&amp;gt;.&amp;lt;expansion-version&amp;gt;.&amp;lt;package-name&amp;gt;.obb//例如：main.10001.com.demo.app.obb main|patch: main代表主扩展包，patch代表补充扩展包，一">
+<meta name="keywords" content="Cocos2d-x,Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cocos2d-x3.10使用obb扩展包">
+<meta property="og:url" content="http://excu4fun.com/2018/10/21/android-obb/index.html">
+<meta property="og:site_name" content="excu4funEric">
+<meta property="og:description" content="一. 创建Obb文件并模拟下载环境1.1 Obb文件命名规则根据google官方的OBB文件命名规则来创建Obb文件：12&amp;lt;main|patch&amp;gt;.&amp;lt;expansion-version&amp;gt;.&amp;lt;package-name&amp;gt;.obb//例如：main.10001.com.demo.app.obb main|patch: main代表主扩展包，patch代表补充扩展包，一">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://excu4fun.com/2018/10/21/android-obb/13840455-27920962929c5f4b.png">
+<meta property="og:updated_time" content="2018-10-22T07:06:27.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cocos2d-x3.10使用obb扩展包">
+<meta name="twitter:description" content="一. 创建Obb文件并模拟下载环境1.1 Obb文件命名规则根据google官方的OBB文件命名规则来创建Obb文件：12&amp;lt;main|patch&amp;gt;.&amp;lt;expansion-version&amp;gt;.&amp;lt;package-name&amp;gt;.obb//例如：main.10001.com.demo.app.obb main|patch: main代表主扩展包，patch代表补充扩展包，一">
+<meta name="twitter:image" content="http://excu4fun.com/2018/10/21/android-obb/13840455-27920962929c5f4b.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Eric&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Eric&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录工作生活中的点滴
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Eric" target="_blank" href="//excu4fun.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/excu4funEric">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/excu4fun?">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-android-obb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Cocos2d-x3.10使用obb扩展包
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-10-21
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="一-创建Obb文件并模拟下载环境"><a href="#一-创建Obb文件并模拟下载环境" class="headerlink" title="一. 创建Obb文件并模拟下载环境"></a>一. 创建Obb文件并模拟下载环境</h3><h4 id="1-1-Obb文件命名规则"><a href="#1-1-Obb文件命名规则" class="headerlink" title="1.1 Obb文件命名规则"></a>1.1 Obb文件命名规则</h4><p>根据google官方的OBB文件命名规则来创建Obb文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;main|patch&gt;.&lt;expansion-version&gt;.&lt;package-name&gt;.obb</span><br><span class="line">//例如：main.10001.com.demo.app.obb</span><br></pre></td></tr></table></figure></p>
+<p>main|patch: main代表主扩展包，patch代表补充扩展包，一般只使用main关键字。<br>expansion-version: 即version code。<br>package-name: 包名。<br>obb：后缀，本质为zip文件。</p>
+<p><strong>注意：</strong><br>上传google后台时，测试包的version code不能与正式包的version code相同，google不允许上传相同版本的<br>app，即使其中一个是用来测试。</p>
+<h4 id="1-2-创建obb文件"><a href="#1-2-创建obb文件" class="headerlink" title="1.2 创建obb文件"></a>1.2 创建obb文件</h4><p>推荐使用winrar来创建obb文件，选择需要做成obb扩展包的资源文件，将其压缩，配置如下<br><img src="/2018/10/21/android-obb/13840455-27920962929c5f4b.png" title="使用winrar创建obb文件"></p>
+<p><strong>注意：</strong><br>压缩文件格式选择”zip“，压缩方式选择”存储“</p>
+<h4 id="1-3-本地模拟obb环境测试"><a href="#1-3-本地模拟obb环境测试" class="headerlink" title="1.3 本地模拟obb环境测试"></a>1.3 本地模拟obb环境测试</h4><p>将创建好的obb文件放入手机sdcard/Android/obb/com.yourpackageName/目录下，如果本地没有相应目录，则<br>手动创建即可（apk与obb上传google play后台之后，用户下载应用会自动创建相应目录）完成本地测试环境。</p>
+<h3 id="二-修改引擎层代码"><a href="#二-修改引擎层代码" class="headerlink" title="二. 修改引擎层代码"></a>二. 修改引擎层代码</h3><p><strong>Cocos2d-x3.16版本已添加读取obb文件功能，但3.16之前版本的则需要修改引擎部分代码才能读取obb文件</strong></p>
+<h4 id="2-1-修改Java-org-cocos2dx-lib-Cocos2dxHelper-cpp"><a href="#2-1-修改Java-org-cocos2dx-lib-Cocos2dxHelper-cpp" class="headerlink" title="2.1 修改Java_org_cocos2dx_lib_Cocos2dxHelper.cpp"></a>2.1 修改Java_org_cocos2dx_lib_Cocos2dxHelper.cpp</h4><p>在Java_org_cocos2dx_lib_Cocos2dxHelper.cpp中添加如下代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//添加obb path</span><br><span class="line">string g_obbPath</span><br><span class="line">//添加设置obbpath方法</span><br><span class="line">	JNIEXPORT void JNICALL Java_org_cocos2dx_lib_Cocos2dxHelper_nativeSetObbPath(JNIEnv* env, jobject thiz, jstring obbPath) &#123;</span><br><span class="line">        g_obbPath = JniHelper::jstring2string(obbPath);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">//添加获取obbpath 方法</span><br><span class="line">const char * <span class="function"><span class="title">getObbPath</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> g_obbPath.c_str();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Java_org_cocos2dx_lib_Cocos2dxHelper.h中添加如下代码：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//添加方法</span><br><span class="line">extern const char * getObbPath();</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-2-修改CCFileUtils-android-cpp"><a href="#2-2-修改CCFileUtils-android-cpp" class="headerlink" title="2.2 修改CCFileUtils-android.cpp"></a>2.2 修改CCFileUtils-android.cpp</h4><p>在CCFileUtilsAndroid.h中添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include "base/ZipUtils.h"</span></span><br><span class="line">//如要引入头文件，请确保Android.mk中配置了正确的路径</span><br></pre></td></tr></table></figure></p>
+<p>在CCFileUtilsAndroid.cpp中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//创建全局指针变量obbFile</span><br><span class="line">ZipFile *obbFile;</span><br></pre></td></tr></table></figure></p>
+<p>在构造函数FileUtilsAndroid::FileUtilsAndroid()中添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FileUtilsAndroid::FileUtilsAndroid()</span><br><span class="line">&#123;</span><br><span class="line">    obbFile = nullptr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在析构函数FileUtilsAndroid::~FileUtilsAndroid()中添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FileUtilsAndroid::~FileUtilsAndroid()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(obbFile != nullptr) &#123;</span><br><span class="line">        delete obbFile;</span><br><span class="line">        obbFile = NULL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有心的同学可以发现上述添加在之后的代码里中创建了一个<a href="https://baike.baidu.com/item/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/5946627?fr=aladdin" target="_blank" rel="noopener">单例模式</a></p>
+<p>在isFileExistInternal()方法中做如下修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">//引擎层代码不建议直接复制，建议与本地代码仔细比对后手动修改，注释部分用于方便看日志，可忽略</span><br><span class="line">bool FileUtilsAndroid::isFileExistInternal(const std::string&amp; strFilePath) const</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (strFilePath.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bool bFound = <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">    // Check whether file exists <span class="keyword">in</span> apk.</span><br><span class="line">    <span class="keyword">if</span> (strFilePath[0] != <span class="string">'/'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        const char* s = strFilePath.c_str();</span><br><span class="line"></span><br><span class="line">        // Found <span class="string">"assets/"</span> at the beginning of the path and we dont want it</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">if</span> (strFilePath.find(_defaultResRootPath) == 0) s += strlen(<span class="string">"assets/"</span>);</span><br><span class="line">        <span class="keyword">if</span> (FileUtilsAndroid::assetmanager) &#123;</span><br><span class="line">            AAsset* aa = AAssetManager_open(FileUtilsAndroid::assetmanager, s, AASSET_MODE_UNKNOWN);</span><br><span class="line">            <span class="keyword">if</span> (aa)</span><br><span class="line">            &#123;</span><br><span class="line">                bFound = <span class="literal">true</span>;</span><br><span class="line">                AAsset_close(aa);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                 <span class="keyword">if</span>(getObbPath() != nullptr)&#123;</span><br><span class="line">                // CCLOG(<span class="string">"[AssetManager] ... in APK %s,%s, found = false! \n obbPath=%s"</span>, strFilePath.c_str(),s, getObbPath());</span><br><span class="line">                // ZipFile *obbFile = new ZipFile(getObbPath()); </span><br><span class="line">                <span class="keyword">if</span> (obbFile == nullptr) &#123;</span><br><span class="line">                    obbFile = new ZipFile(getObbPath());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> ( obbFile-&gt;fileExists(strFilePath.c_str()) ) &#123;</span><br><span class="line">                    // CCLOG(<span class="string">"obb ... in APK %s, found = true!"</span>, strFilePath.c_str());</span><br><span class="line">                    bFound = <span class="literal">true</span>;</span><br><span class="line">                    // delete obbFile;</span><br><span class="line">                    // obbFile = NULL;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    // CCLOG(<span class="string">"obb ... in APK %s, found = false!"</span>, strFilePath.c_str());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        FILE *fp = fopen(strFilePath.c_str(), <span class="string">"r"</span>);</span><br><span class="line">        <span class="keyword">if</span>(fp)</span><br><span class="line">        &#123;</span><br><span class="line">            bFound = <span class="literal">true</span>;</span><br><span class="line">            fclose(fp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> bFound;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在getData()方法中做如下修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">Data FileUtilsAndroid::getData(const std::string&amp; filename, bool forString)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (filename.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> Data::Null;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    unsigned char* data = nullptr;</span><br><span class="line">    ssize_t size = 0;</span><br><span class="line">    string fullPath = fullPathForFilename(filename);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (fullPath[0] != <span class="string">'/'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        string relativePath = string();</span><br><span class="line"></span><br><span class="line">        size_t position = fullPath.find(<span class="string">"assets/"</span>);</span><br><span class="line">        <span class="keyword">if</span> (0 == position) &#123;</span><br><span class="line">            // <span class="string">"assets/"</span> is at the beginning of the path and we dont want it</span><br><span class="line">            relativePath += fullPath.substr(strlen(<span class="string">"assets/"</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            relativePath += fullPath;</span><br><span class="line">        &#125;</span><br><span class="line">        LOGD(<span class="string">"relative path = %s"</span>, relativePath.c_str());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nullptr == FileUtilsAndroid::assetmanager) &#123;</span><br><span class="line">            LOGD(<span class="string">"... FileUtilsAndroid::assetmanager is nullptr"</span>);</span><br><span class="line">            <span class="built_in">return</span> Data::Null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // <span class="built_in">read</span> asset data</span><br><span class="line">        AAsset* asset =</span><br><span class="line">            AAssetManager_open(FileUtilsAndroid::assetmanager,</span><br><span class="line">                               relativePath.c_str(),</span><br><span class="line">                               AASSET_MODE_UNKNOWN);</span><br><span class="line">         <span class="keyword">if</span> (nullptr != asset) &#123;</span><br><span class="line">            off_t fileSize = AAsset_getLength(asset);</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (forString)</span><br><span class="line">            &#123;</span><br><span class="line">                data = (unsigned char*) malloc(fileSize + 1);</span><br><span class="line">                data[fileSize] = <span class="string">'\0'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                data = (unsigned char*) malloc(fileSize);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            int bytesread = AAsset_read(asset, (void*)data, fileSize);</span><br><span class="line">            size = bytesread;</span><br><span class="line"> </span><br><span class="line">            CCLOG(<span class="string">"apk size test: size=%d;fileSize=%d"</span>, size, fileSize);</span><br><span class="line">            AAsset_close(asset);</span><br><span class="line">            // <span class="built_in">return</span> Data::Null;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            CCLOG(<span class="string">"asset is nullptr"</span>);</span><br><span class="line">            ZipFile zipFile(getApkPath());</span><br><span class="line">            // CCLOG(<span class="string">"guok special read: %s;forString=%d"</span>, relativePath.c_str(), forString);</span><br><span class="line">            string zFileNamePath = <span class="string">"assets/"</span> + relativePath;</span><br><span class="line">            // CCLOG(<span class="string">"zFileNamePath =%s "</span>,zFileNamePath.c_str());</span><br><span class="line">            // CCLOG(<span class="string">"getObbPath() = %s"</span>,getObbPath());</span><br><span class="line">             <span class="keyword">if</span> ( zipFile.fileExists(zFileNamePath.c_str()) ) &#123;</span><br><span class="line">                ssize_t fsize = 0 ;</span><br><span class="line">                unsigned char* content = zipFile.getFileData(zFileNamePath.c_str(), &amp;fsize);</span><br><span class="line">                // CCLOG(<span class="string">"zipFile is exists!"</span>);</span><br><span class="line">                <span class="keyword">if</span>( fsize &gt; 0) &#123;</span><br><span class="line">                    // CCLOG(<span class="string">"guok read success %d"</span>, fsize);</span><br><span class="line">                    memcpy( data, content, fsize);</span><br><span class="line">                    size = fsize;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    // CCLOG(<span class="string">"guok read error %d"</span>,  fsize);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(content)free(content);</span><br><span class="line"></span><br><span class="line">             &#125; <span class="keyword">else</span> <span class="keyword">if</span>(getObbPath() != nullptr)&#123;</span><br><span class="line">                <span class="keyword">if</span> (obbFile == nullptr) &#123;</span><br><span class="line">                    obbFile = new ZipFile(getObbPath());</span><br><span class="line">                &#125;</span><br><span class="line">                // CCLOG(<span class="string">"getObbPath() is exists!"</span>);</span><br><span class="line">                string s = getObbPath();</span><br><span class="line">                string zObbNamePath = <span class="string">"assets/"</span> + relativePath;</span><br><span class="line">                // CCLOG(<span class="string">"zObbNamePath = %s"</span>,zObbNamePath.c_str());</span><br><span class="line">                 <span class="keyword">if</span> ( obbFile-&gt;fileExists(zObbNamePath.c_str()) ) &#123;</span><br><span class="line">                    ssize_t fsize = 0;</span><br><span class="line">                    unsigned char* content = obbFile-&gt;getFileData(zObbNamePath.c_str(), &amp;fsize);</span><br><span class="line">                    // CCLOG(<span class="string">"obbFile is exists!"</span>);</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">if</span>( fsize &gt; 0) &#123;</span><br><span class="line">                        CCLOG(<span class="string">"fsize = %d"</span>,fsize);</span><br><span class="line">                        <span class="keyword">if</span> (forString)</span><br><span class="line">                        &#123;</span><br><span class="line">                            data = (unsigned char*) malloc(fsize + 1);</span><br><span class="line">                            data[fsize] = <span class="string">'\0'</span>;</span><br><span class="line">                           // CCLOG(<span class="string">"ssssssssssss"</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            data = (unsigned char*) malloc(fsize);</span><br><span class="line">                          //  CCLOG(<span class="string">"qqqqqqqqqqqqqqqqqqqq"</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                        memcpy( data, content, fsize);</span><br><span class="line">                        size = fsize;</span><br><span class="line">                         // CCLOG(<span class="string">"obb getdata success %d"</span>, fsize);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        // CCLOG(<span class="string">"obb getdata error %d"</span>,  fsize);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(content)free(content);</span><br><span class="line">                 &#125;</span><br><span class="line">             </span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (size &lt;= 0)</span><br><span class="line">            &#123;</span><br><span class="line">                CCLOG(<span class="string">"obb null size %d"</span>, size);</span><br><span class="line">                <span class="built_in">return</span> Data::Null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">		...................</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在getFileData()方法中做如下修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line">unsigned char* FileUtilsAndroid::getFileData(const std::string&amp; filename, const char* mode, ssize_t * size)</span><br><span class="line">&#123;    </span><br><span class="line">    unsigned char * data = 0;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ( filename.empty() || (! mode) )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string fullPath = fullPathForFilename(filename);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (fullPath[0] != <span class="string">'/'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        string relativePath = string();</span><br><span class="line"></span><br><span class="line">        size_t position = fullPath.find(<span class="string">"assets/"</span>);</span><br><span class="line">        <span class="keyword">if</span> (0 == position) &#123;</span><br><span class="line">            // <span class="string">"assets/"</span> is at the beginning of the path and we dont want it</span><br><span class="line">            relativePath += fullPath.substr(strlen(<span class="string">"assets/"</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            relativePath += fullPath;</span><br><span class="line">        &#125;</span><br><span class="line">        LOGD(<span class="string">"relative path = %s"</span>, relativePath.c_str());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nullptr == FileUtilsAndroid::assetmanager) &#123;</span><br><span class="line">            LOGD(<span class="string">"... FileUtilsAndroid::assetmanager is nullptr"</span>);</span><br><span class="line">            <span class="built_in">return</span> nullptr;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // <span class="built_in">read</span> asset data</span><br><span class="line">        AAsset* asset =</span><br><span class="line">            AAssetManager_open(FileUtilsAndroid::assetmanager,</span><br><span class="line">                               relativePath.c_str(),</span><br><span class="line">                               AASSET_MODE_UNKNOWN);</span><br><span class="line">        <span class="keyword">if</span> (nullptr != asset) &#123;</span><br><span class="line">            LOGD(<span class="string">"asset is not nullptr"</span>);</span><br><span class="line">            </span><br><span class="line">            off_t fileSize = AAsset_getLength(asset);</span><br><span class="line"> </span><br><span class="line">            data = (unsigned char*) malloc(fileSize);</span><br><span class="line"> </span><br><span class="line">            int bytesread = AAsset_read(asset, (void*)data, fileSize);</span><br><span class="line">            <span class="keyword">if</span> (size)</span><br><span class="line">            &#123;</span><br><span class="line">                *size = bytesread;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            AAsset_close(asset);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            LOGD(<span class="string">"asset is  nullptr"</span>);</span><br><span class="line">            ZipFile zipFile(getApkPath());</span><br><span class="line">            CCLOG(<span class="string">" special read: %s"</span>, relativePath.c_str());</span><br><span class="line">            string zFileNamePath = <span class="string">"assets/"</span> + relativePath;</span><br><span class="line"></span><br><span class="line">           </span><br><span class="line">            <span class="keyword">if</span> ( zipFile.fileExists(zFileNamePath.c_str()) ) &#123;</span><br><span class="line">                ssize_t fsize = 0;</span><br><span class="line">                unsigned char* content = zipFile.getFileData(zFileNamePath.c_str(), &amp;fsize);</span><br><span class="line">                <span class="keyword">if</span>( fsize &gt; 0) &#123;</span><br><span class="line">                    // CCLOG(<span class="string">"getfiledata success %d"</span>, fsize);</span><br><span class="line">                    data = (unsigned char*) malloc(fsize);</span><br><span class="line">                    memcpy( data, content, fsize);</span><br><span class="line">                    <span class="keyword">if</span> (size)</span><br><span class="line">                    &#123;</span><br><span class="line">                        *size = fsize;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    CCLOG(<span class="string">"getfiledata error %d"</span>,  fsize);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(content)free(content);  </span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(getObbPath() != nullptr)&#123;</span><br><span class="line">                <span class="keyword">if</span> (obbFile == nullptr) &#123;</span><br><span class="line">                    obbFile = new ZipFile(getObbPath());</span><br><span class="line">                &#125;</span><br><span class="line">               </span><br><span class="line">                string zObbNamePath = <span class="string">"assets/"</span> + relativePath;</span><br><span class="line">                // CCLOG(<span class="string">"zObbNamePath = %s"</span>,zObbNamePath.c_str());</span><br><span class="line">                 <span class="keyword">if</span> ( obbFile-&gt;fileExists(zObbNamePath.c_str()) ) &#123;</span><br><span class="line">                    ssize_t fsize = 0;</span><br><span class="line">                    unsigned char* content = obbFile-&gt;getFileData(zObbNamePath.c_str(), &amp;fsize);</span><br><span class="line">                    delete obbFile;</span><br><span class="line">                    obbFile = NULL;</span><br><span class="line">                    <span class="keyword">if</span>( fsize &gt; 0) &#123;</span><br><span class="line">                         // CCLOG(<span class="string">"obb getfiledata success %d"</span>, fsize);</span><br><span class="line">                        data = (unsigned char*) malloc(fsize);</span><br><span class="line">                        memcpy( data, content, fsize);</span><br><span class="line">                        <span class="keyword">if</span> (size)</span><br><span class="line">                        &#123;</span><br><span class="line">                            *size = fsize;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        // CCLOG(<span class="string">"obb getfiledata error %d"</span>,  fsize);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(content)free(content);</span><br><span class="line">                 &#125;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (!data)</span><br><span class="line">        &#123;</span><br><span class="line">            CCLOG(<span class="string">"getFileData error: %s"</span>, relativePath.c_str());</span><br><span class="line">            <span class="built_in">return</span> nullptr;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">        &#123;</span><br><span class="line">		...................</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三-修改安卓层代码"><a href="#三-修改安卓层代码" class="headerlink" title="三. 修改安卓层代码"></a>三. 修改安卓层代码</h3><p>准备工作：在Android Studio工程中导入google官方提供的库<strong>google_market_apk_expansion</strong>,<br>具体可查看<a href="https://developer.android.com/google/play/expansion-files#ExpansionPolicy" target="_blank" rel="noopener">Android官方文档</a>，<br>所需的库可通过Android SDK Manager进行下载</p>
+<h4 id="3-1-在AndroidManifest-xml中配置相关权限"><a href="#3-1-在AndroidManifest-xml中配置相关权限" class="headerlink" title="3.1 在AndroidManifest.xml中配置相关权限"></a>3.1 在AndroidManifest.xml中配置相关权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">"com.android.vending.CHECK_LICENSE"</span> /&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span> /&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WAKE_LOCK"</span> /&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.ACCESS_WIFI_STATE"</span>/&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-在Cocos2dxActivity中添加变量及方法"><a href="#3-2-在Cocos2dxActivity中添加变量及方法" class="headerlink" title="3.2 在Cocos2dxActivity中添加变量及方法"></a>3.2 在Cocos2dxActivity中添加变量及方法</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public static String FATE_OBB_PATH = <span class="string">""</span>;</span><br><span class="line">public static String FATE_OBB_Name = <span class="string">""</span>;</span><br><span class="line">@Override</span><br><span class="line">    protected void onCreate(final Bundle savedInstanceState) &#123;</span><br><span class="line">        FATE_OBB_Name = getObbFileName();</span><br><span class="line">        FATE_OBB_PATH = getVirtualObbFileFullpath();</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        ....</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">private String <span class="function"><span class="title">getObbFileName</span></span>() &#123;</span><br><span class="line">        PackageInfo info = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            info = getPackageManager().getPackageInfo(getPackageName(), 0);</span><br><span class="line">            String fileName = <span class="string">"main."</span> + info.versionCode + <span class="string">"."</span> + getPackageName() + <span class="string">".obb"</span>;</span><br><span class="line">            Log.e(<span class="string">"obb===fileName==="</span>, fileName);</span><br><span class="line">            <span class="built_in">return</span> fileName;</span><br><span class="line">        &#125; catch (NameNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">private String <span class="function"><span class="title">getVirtualObbFileFullpath</span></span>()&#123;</span><br><span class="line">    String _path = <span class="string">""</span>;</span><br><span class="line">    File file = getObbDir();</span><br><span class="line">    <span class="keyword">if</span>(file == null || !file.exists())&#123;</span><br><span class="line">        file.mkdirs();</span><br><span class="line">    &#125;</span><br><span class="line">    _path = file.getPath() + <span class="string">"/"</span> + getObbFileName();</span><br><span class="line">    Log.e(<span class="string">"obb===_path==="</span>, _path);</span><br><span class="line">    <span class="built_in">return</span> _path;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-在Cocos2dxHelper中添加变量及方法"><a href="#3-3-在Cocos2dxHelper中添加变量及方法" class="headerlink" title="3.3 在Cocos2dxHelper中添加变量及方法"></a>3.3 在Cocos2dxHelper中添加变量及方法</h4> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static ZipResourceFile obbzip = null;//使用需要外部依赖</span><br><span class="line"></span><br><span class="line">private static native void nativeSetObbPath(final String pObbPath);// nativeSetObbPath 设置obb路径方法</span><br></pre></td></tr></table></figure>
+<p>在init()中添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public static void init(final Activity activity) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (!sInited) &#123;</span><br><span class="line">    		final ApplicationInfo applicationInfo = activity.getApplicationInfo();</span><br><span class="line">    		</span><br><span class="line">            Cocos2dxHelper.sCocos2dxHelperListener = (Cocos2dxHelperListener)activity;</span><br><span class="line">                    </span><br><span class="line">    		Cocos2dxHelper.sPackageName = applicationInfo.packageName;</span><br><span class="line">    		Cocos2dxHelper.sFileDirectory = activity.getFilesDir().getAbsolutePath();</span><br><span class="line">            Cocos2dxHelper.nativeSetApkPath(applicationInfo.sourceDir);</span><br><span class="line">    </span><br><span class="line">    		Cocos2dxHelper.sCocos2dxAccelerometer = new Cocos2dxAccelerometer(activity);</span><br><span class="line">    		Cocos2dxHelper.sCocos2dMusic = new Cocos2dxMusic(activity);</span><br><span class="line">    		Cocos2dxHelper.sCocos2dSound = new Cocos2dxSound(activity);</span><br><span class="line">    		Cocos2dxHelper.sAssetManager = activity.getAssets();</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (fileIsExists(Cocos2dxActivity.FATE_OBB_PATH)) &#123;</span><br><span class="line">				Cocos2dxHelper.nativeSetObbPath(Cocos2dxActivity.FATE_OBB_PATH);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			PackageInfo info = null;</span><br><span class="line">			try &#123;</span><br><span class="line">				info = activity.getPackageManager().getPackageInfo(</span><br><span class="line">						activity.getPackageName(), 0);</span><br><span class="line">				Cocos2dxHelper.obbzip = APKExpansionSupport</span><br><span class="line">						.getAPKExpansionZipFile(activity, info.versionCode, 0);</span><br><span class="line">			&#125; catch (PackageManager.NameNotFoundException e1) &#123;</span><br><span class="line">				e1.printStackTrace();</span><br><span class="line">			&#125; catch (IOException e1) &#123;</span><br><span class="line">				e1.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">    		Cocos2dxHelper.nativeSetContext((Context)activity, Cocos2dxHelper.sAssetManager);</span><br><span class="line">    </span><br><span class="line">            Cocos2dxBitmap.setContext(activity);</span><br><span class="line">            Cocos2dxETCLoader.setContext(activity);</span><br><span class="line">            sActivity = activity;</span><br><span class="line"></span><br><span class="line">            sInited = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加fileIsExists方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static boolean fileIsExists(String strFile) &#123;</span><br><span class="line">    <span class="keyword">if</span>(strFile.isEmpty())&#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    try &#123;</span><br><span class="line">        File f = new File(strFile);</span><br><span class="line">        <span class="keyword">if</span> (!f.exists()) &#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Log.d(<span class="string">"obb"</span>, <span class="string">"file exist!"</span>);</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-4-修改Cocos2dxMusic"><a href="#3-4-修改Cocos2dxMusic" class="headerlink" title="3.4 修改Cocos2dxMusic"></a>3.4 修改Cocos2dxMusic</h4><p>将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mediaPlayer.setDataSource(assetFileDescritor.getFileDescriptor(),assetFileDescritor.getStartOffset(), assetFileDescritor.getLength());</span><br></pre></td></tr></table></figure></p>
+<p>替换为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">final AssetFileDescriptor assetFileDescritor = Cocos2dxHelper.obbzip.getAssetFileDescriptor(<span class="string">"assets/"</span>+pPath);</span><br><span class="line">    <span class="keyword">if</span>(assetFileDescritor == null)&#123;</span><br><span class="line">        final AssetFileDescriptor assetFileDescritor1 = this.mContext.getAssets().openFd(pPath);</span><br><span class="line">        mediaPlayer.setDataSource(assetFileDescritor1.getFileDescriptor(), assetFileDescritor1.getStartOffset(), assetFileDescritor1.getLength());</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        mediaPlayer.setDataSource(assetFileDescritor.getFileDescriptor(), assetFileDescritor.getStartOffset(), assetFileDescritor.getLength());                    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-5-修改Cocos2dxSound"><a href="#3-5-修改Cocos2dxSound" class="headerlink" title="3.5 修改Cocos2dxSound"></a>3.5 修改Cocos2dxSound</h4><p>将<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soundID = this.mSoundPool.load(this.mContext.getAssets().openFd(pPath), 0);</span><br></pre></td></tr></table></figure></p>
+<p>替换为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">final AssetFileDescriptor assetFileDescritor = Cocos2dxHelper.obbzip</span><br><span class="line">            .getAssetFileDescriptor(<span class="string">"assets/"</span> + pPath);</span><br><span class="line">    <span class="keyword">if</span> (assetFileDescritor == null) &#123;</span><br><span class="line">        final AssetFileDescriptor assetFileDescritor1 = this.mContext</span><br><span class="line">                            .getAssets().openFd(pPath);</span><br><span class="line">        soundID = this.mSoundPool.load(assetFileDescritor1, 0);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        soundID = this.mSoundPool.load(assetFileDescritor, 0);</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-6-在主Activity中添加代码"><a href="#3-6-在主Activity中添加代码" class="headerlink" title="3.6 在主Activity中添加代码"></a>3.6 在主Activity中添加代码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static final int REQUEST_EXTERNAL_STORAGE = 1;</span><br><span class="line">private static String[] PERMISSIONS_STORAGE = &#123;</span><br><span class="line">      <span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span>,</span><br><span class="line">      <span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static void verifyStoragePermissions(Sprites activity) &#123;</span><br><span class="line">   try &#123;</span><br><span class="line">      //检测是否有写的权限</span><br><span class="line">      int permission = ActivityCompat.checkSelfPermission(activity,</span><br><span class="line">            <span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>);</span><br><span class="line">      <span class="keyword">if</span> (permission != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">         // 没有写的权限，去申请写的权限，弹出对话框</span><br><span class="line">         ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,REQUEST_EXTERNAL_STORAGE);</span><br><span class="line">      &#125;</span><br><span class="line">	  &#125; catch (Exception e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在onCreate()中添加：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">//判断是否有sd卡读写权限，如果没有，则去申请！</span><br><span class="line">verifyStoragePermissions(Sprites.this); </span><br><span class="line"></span><br><span class="line">//检测是否已经下载到了obb包,如果没有，则弹出错误提示，killProcess</span><br><span class="line"><span class="keyword">if</span> (Cocos2dxActivity.FATE_OBB_PATH.isEmpty() || !Cocos2dxHelper.fileIsExists(Cocos2dxActivity.FATE_OBB_PATH)) &#123;</span><br><span class="line">   // 创建构建器</span><br><span class="line">   AlertDialog.Builder builder = new AlertDialog.Builder(this);</span><br><span class="line">   // 设置参数</span><br><span class="line">   builder.setTitle(<span class="string">"提示"</span>).setIcon(R.drawable.icon)</span><br><span class="line">         .setMessage(<span class="string">"游戏资源已损坏，请重新下载！"</span>)</span><br><span class="line">         .setPositiveButton(<span class="string">"退出"</span>, new DialogInterface.<span class="function"><span class="title">OnClickListener</span></span>() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(DialogInterface dialog,</span><br><span class="line">                           int <span class="built_in">which</span>) &#123;</span><br><span class="line">               // TODO Auto-generated method stub</span><br><span class="line">               android.os.Process.killProcess(android.os.Process.myPid());</span><br><span class="line">            &#125;</span><br><span class="line">         &#125;);</span><br><span class="line">   builder.create().show();</span><br><span class="line"></span><br><span class="line">   new Handler().postDelayed(new <span class="function"><span class="title">Runnable</span></span>()&#123;          //延时3s退出程序</span><br><span class="line">      public void <span class="function"><span class="title">run</span></span>() &#123;</span><br><span class="line">         android.os.Process.killProcess(android.os.Process.myPid());</span><br><span class="line">         //execute the task</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;, 3000);   //如果未检测到obb包，延时3s后关闭程序</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*这里最正确的方法应该是如果未检测到obb包，则去google后台手动下载，但这一部分的内容非常多而繁琐，在本篇中不进行</span><br><span class="line">详述，google官方表示不保证所有机型都可以下载得到obb包，因此需要添加手动下载的功能，通过公司的游戏实际检验，下载</span><br><span class="line">不到obb包的概率小于1%（当然这个统计不是很专业，也有可能有玩家没下载到obb包但没有反馈）如要添加此功能，需要依赖</span><br><span class="line">google配套的库，但是关于download方面的库年代已经很久远了，许多方法现在已经废弃，而google又一直没有升级过这个库，</span><br><span class="line">导致想要用需要自己手动去修改里面的n多错误，这将是件令人很头疼的问题，如果有时间，我会在之后的blog中记录如何实现</span><br><span class="line">这一过程*/</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>完成以上修改之后，就可以先将obb包copy到手机相关目录下进行本地测试，没有问题就可以上传google beta测试包到google<br>play后台去进行相关测试了，这部分内容是大学毕业进入公司后接手的第一个项目，全部完成用了一周的时间，之前公司一直<br>是使用热更的方法来应对google的100Mapk上传限制，导致玩家每次都要下载一个很大的更新包，影响游戏体验，因此公司决<br>定使用obb分包的方式上传apk，在此还要感谢老陈对我这个刚来的菜鸟的信任，将这份任务交给我，此致。</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年10月22日 15:06</p>
+        <p>原始链接： <a class="post-url" href="/2018/10/21/android-obb/" title="Cocos2d-x3.10使用obb扩展包">http://excu4fun.com/2018/10/21/android-obb/</a></p>
+        <footer>
+            <a href="http://excu4fun.com">
+                <img src="/images/logo.png" alt="Eric Zhang">
+                Eric Zhang
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://excu4fun.com/2018/10/21/android-obb/&title=《Cocos2d-x3.10使用obb扩展包》 — excu4funEric&pic=/images/obb.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://excu4fun.com/2018/10/21/android-obb/&title=《Cocos2d-x3.10使用obb扩展包》 — excu4funEric&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://excu4fun.com/2018/10/21/android-obb/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Cocos2d-x3.10使用obb扩展包》 — excu4funEric&url=http://excu4fun.com/2018/10/21/android-obb/&via=http://excu4fun.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://excu4fun.com/2018/10/21/android-obb/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://excu4fun.com/2018/10/21/android-obb/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Cocos2d-x/" class="color5">Cocos2d-x</a>
+      
+    <a href="/tags/Android/" class="color3">Android</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-创建Obb文件并模拟下载环境"><span class="post-toc-text">一. 创建Obb文件并模拟下载环境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-Obb文件命名规则"><span class="post-toc-text">1.1 Obb文件命名规则</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-创建obb文件"><span class="post-toc-text">1.2 创建obb文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-3-本地模拟obb环境测试"><span class="post-toc-text">1.3 本地模拟obb环境测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-修改引擎层代码"><span class="post-toc-text">二. 修改引擎层代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-修改Java-org-cocos2dx-lib-Cocos2dxHelper-cpp"><span class="post-toc-text">2.1 修改Java_org_cocos2dx_lib_Cocos2dxHelper.cpp</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-修改CCFileUtils-android-cpp"><span class="post-toc-text">2.2 修改CCFileUtils-android.cpp</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-修改安卓层代码"><span class="post-toc-text">三. 修改安卓层代码</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-1-在AndroidManifest-xml中配置相关权限"><span class="post-toc-text">3.1 在AndroidManifest.xml中配置相关权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-在Cocos2dxActivity中添加变量及方法"><span class="post-toc-text">3.2 在Cocos2dxActivity中添加变量及方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-3-在Cocos2dxHelper中添加变量及方法"><span class="post-toc-text">3.3 在Cocos2dxHelper中添加变量及方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-4-修改Cocos2dxMusic"><span class="post-toc-text">3.4 修改Cocos2dxMusic</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-5-修改Cocos2dxSound"><span class="post-toc-text">3.5 修改Cocos2dxSound</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-6-在主Activity中添加代码"><span class="post-toc-text">3.6 在主Activity中添加代码</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-text">总结</span></a>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/10/22/time-or-money/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Time Or Money
+        
+      </span>
+    </a>
+  
+  
+</nav>
+
+
+
+    
+        <section id="comments">
+            <div id="disqus_thread">
+                <script type="text/javascript">
+                    var disqus_shortname = 'true';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </section>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 Eric Zhang<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://excu4fun.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/文摘/">文摘</a><a class="category-link" href="/categories/闲话/">闲话</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cocos2d-x/" style="font-size: 10px;">Cocos2d-x</a> <a href="/tags/文摘/" style="font-size: 10px;">文摘</a> <a href="/tags/闲话/" style="font-size: 10px;">闲话</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cocos2d-x/" style="font-size: 10px;">Cocos2d-x</a> <a href="/tags/文摘/" style="font-size: 10px;">文摘</a> <a href="/tags/闲话/" style="font-size: 10px;">闲话</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
