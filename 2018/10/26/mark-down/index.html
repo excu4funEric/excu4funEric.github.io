@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Markdown基础语法 | excu4funEric</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="excu4fun,Eric's Blog" />
+  
+  <meta name="description" content="前言：为什么你应该用Markdown写作?  &amp;emsp;&amp;emsp;Markdown是一种纯文本格式的标记语言，这是它的优点之一，只要是支持Markdown的地方都恩能够获得相同的编辑效果，有利于文本迁移，方便写作者排版，相信以后越来越多的平台都将支持Markdown编辑模式。 一、标题&amp;emsp;&amp;emsp;在标题文字前面加#来表示这是一个标题，Markdown支持6级标题，示例：123456">
+<meta name="keywords" content="Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown基础语法">
+<meta property="og:url" content="http://excu4fun.com/2018/10/26/mark-down/index.html">
+<meta property="og:site_name" content="excu4funEric">
+<meta property="og:description" content="前言：为什么你应该用Markdown写作?  &amp;emsp;&amp;emsp;Markdown是一种纯文本格式的标记语言，这是它的优点之一，只要是支持Markdown的地方都恩能够获得相同的编辑效果，有利于文本迁移，方便写作者排版，相信以后越来越多的平台都将支持Markdown编辑模式。 一、标题&amp;emsp;&amp;emsp;在标题文字前面加#来表示这是一个标题，Markdown支持6级标题，示例：123456">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/excu4funEric/excu4funEric.github.io/blob/master/images/photo-1539980032549-3cd0889e4590.jpg">
+<meta property="og:image" content="http://excu4fun.com/2018/10/26/mark-down/22B_4KC8[H0TSU68$9$67OE.png">
+<meta property="og:updated_time" content="2018-10-26T06:41:01.418Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown基础语法">
+<meta name="twitter:description" content="前言：为什么你应该用Markdown写作?  &amp;emsp;&amp;emsp;Markdown是一种纯文本格式的标记语言，这是它的优点之一，只要是支持Markdown的地方都恩能够获得相同的编辑效果，有利于文本迁移，方便写作者排版，相信以后越来越多的平台都将支持Markdown编辑模式。 一、标题&amp;emsp;&amp;emsp;在标题文字前面加#来表示这是一个标题，Markdown支持6级标题，示例：123456">
+<meta name="twitter:image" content="https://github.com/excu4funEric/excu4funEric.github.io/blob/master/images/photo-1539980032549-3cd0889e4590.jpg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Eric&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Eric&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录工作生活中的点滴
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Eric" target="_blank" href="//excu4fun.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/excu4funEric">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/excu4fun?">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-mark-down" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Markdown基础语法
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Markdown/">Markdown</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-10-26
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <table><tr><td bgcolor="#A9A9A9"><br><font color="#FFFF00" size="6">前言：<a href="https://www.jianshu.com/p/2e52f1fae9ff" target="_blank" rel="noopener">为什么你应该用Markdown写作?</a></font><br></td></tr></table>
+
+<p>&emsp;&emsp;Markdown是一种纯文本格式的标记语言，这是它的优点之一，只要是支持Markdown的地方都恩能够获得相同的编辑效果，有利于文本迁移，方便写作者排版，相信以后越来越多的平台都将支持Markdown编辑模式。</p>
+<h1 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h1><p>&emsp;&emsp;在标题文字前面加#来表示这是一个标题，Markdown支持6级标题，示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#这是一级标题</span><br><span class="line">##这是二级标题</span><br><span class="line">###这是三级标题</span><br><span class="line">####这是四级标题</span><br><span class="line">#####这是五级标题</span><br><span class="line">######这是六级标题</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果如下：</p>
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="这是四级标题"><a href="#这是四级标题" class="headerlink" title="这是四级标题"></a>这是四级标题</h4><h5 id="这是五级标题"><a href="#这是五级标题" class="headerlink" title="这是五级标题"></a>这是五级标题</h5><h6 id="这是六级标题"><a href="#这是六级标题" class="headerlink" title="这是六级标题"></a>这是六级标题</h6><h1 id="二、字体"><a href="#二、字体" class="headerlink" title="二、字体"></a>二、字体</h1><h2 id="·加粗"><a href="#·加粗" class="headerlink" title="·加粗"></a>·加粗</h2><p>用两个*将要加粗的文字包括起来</p>
+<h2 id="·斜体"><a href="#·斜体" class="headerlink" title="·斜体"></a>·斜体</h2><p>用一个*将要倾斜的文字包括起来</p>
+<h2 id="·斜体加粗"><a href="#·斜体加粗" class="headerlink" title="·斜体加粗"></a>·斜体加粗</h2><p>用三个*将要倾斜加粗的文字包括起来</p>
+<h2 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h2><p>用两个~将要加删除线的文字包括起来</p>
+<p>&emsp;&emsp;示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">**这是要加粗的文字**</span><br><span class="line">*这是倾斜的文字*</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果如下：<br><strong>这是要加粗的文字</strong><br><em>这是倾斜的文字</em><br><strong><em>这是斜体加粗的文字</em></strong><br><del>这是加删除线的文字</del></p>
+<h1 id="三、引用"><a href="#三、引用" class="headerlink" title="三、引用"></a>三、引用</h1><p>&emsp;&emsp;在要加引用的文字前加&gt;<br>&emsp;&emsp;示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果如下：</p>
+<blockquote>
+<p>这是引用的内容</p>
+</blockquote>
+<h1 id="四、分割线"><a href="#四、分割线" class="headerlink" title="四、分割线"></a>四、分割线</h1><p>&emsp;&emsp;使用三个或三个以上的-或*<br>&emsp;&emsp;示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">--------</span><br><span class="line">***</span><br><span class="line">********</span><br></pre></td></tr></table></figure></p>
+<h1 id="五、图片"><a href="#五、图片" class="headerlink" title="五、图片"></a>五、图片</h1><p>&emsp;&emsp;插入图片语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.[图片描述](图片地址&quot;图片tittle&quot;)</span><br><span class="line">图片票数为图片下面显示的文字。</span><br><span class="line">图片title为图片标题，可省略。</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![sea](https://github.com/excu4funEric/excu4funEric.github.io/blob/master/images/photo-1539980032549-3cd0889e4590.jpg)</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果如下：<br><img src="https://github.com/excu4funEric/excu4funEric.github.io/blob/master/images/photo-1539980032549-3cd0889e4590.jpg" alt="sea"></p>
+<h1 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h1><p>&emsp;&emsp;语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[链接名](链接地址)</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[excu4fun](https://excu4fun.com)</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果如下：<br><a href="https://excu4fun.com">excu4fun</a></p>
+<h1 id="七、表格"><a href="#七、表格" class="headerlink" title="七、表格"></a>七、表格</h1><p>&emsp;&emsp;语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|姓名|技能|排行|</span><br><span class="line">| - | :-: | -: | </span><br><span class="line">|刘备|哭|老大|</span><br><span class="line">|关羽|打|老二|</span><br><span class="line">|张飞|骂|老三|</span><br><span class="line">第二行的-有一个就够，为了对齐多加了几个</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th style="text-align:center">技能</th>
+<th style="text-align:right">排行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>刘备</td>
+<td style="text-align:center">哭</td>
+<td style="text-align:right">老大</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td style="text-align:center">打</td>
+<td style="text-align:right">老二</td>
+</tr>
+<tr>
+<td>张飞</td>
+<td style="text-align:center">骂</td>
+<td style="text-align:right">老三</td>
+</tr>
+</tbody>
+</table>
+<h1 id="八、代码"><a href="#八、代码" class="headerlink" title="八、代码"></a>八、代码</h1><p>&emsp;&emsp;语法：<br>&emsp;&emsp;单行代码：代码之间用`包括起来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`This is a example`</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;代码块：代码之间用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">(```)</span><br><span class="line">This is a example</span><br><span class="line">This is a example</span><br><span class="line">(```)</span><br><span class="line">括号是省略内容，为了方便显示效果，实际使用去掉括号</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果：<br>&emsp;&emsp;单行代码：<br><code>This is a example</code><br>&emsp;&emsp;代码块：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">This is a example</span><br><span class="line">This is a example</span><br></pre></td></tr></table></figure></p>
+<h1 id="九、流程图"><a href="#九、流程图" class="headerlink" title="九、流程图"></a>九、流程图</h1><p>&emsp;&emsp;示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(```)flow</span><br><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: Excute</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;End</span><br><span class="line"></span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">(```)</span><br><span class="line">括号为防止转译，实际使用忽略</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;可使用Markdown文本编辑器来生成流程图，效果如下：<br><img src="/2018/10/26/mark-down/22B_4KC8[H0TSU68$9$67OE.png" title="流程图"></p>
+<h1 id="十、背景及字体"><a href="#十、背景及字体" class="headerlink" title="十、背景及字体"></a>十、背景及字体</h1><p>&emsp;&emsp;语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;&lt;tr&gt;&lt;td bgcolor=#A9A9A9&gt;</span><br><span class="line">这是需要加背景颜色的文字</span><br><span class="line">&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</span><br><span class="line">&lt;font color=#FFFF00 size=6&gt;这是字体&lt;/font&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;效果如下：</p>
+<p><table><tr><td bgcolor="#A9A9A9"><br>这是需要加背景颜色的文字<br></td></tr></table></p>
+<font color="#FFFF00" size="6">这是字体</font>
+
+<p>&emsp;&emsp;附上颜色名列表：</p>
+<table>
+<thead>
+<tr>
+<th>颜色名</th>
+<th style="text-align:center">十六进制颜色值</th>
+<th style="text-align:right">颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><font color="#F0F8FF">AliceBlue</font></td>
+<td style="text-align:center"><font color="#F0F8FF">#F0F8FF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#F0F8FF">rgb(240, 248, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#FAEBD7">AntiqueWhite</font></td>
+<td style="text-align:center"><font color="#FAEBD7">#FAEBD7</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#FAEBD7">rgb(250, 235, 215)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#7FFFD4">Aquamarine</font></td>
+<td style="text-align:center"><font color="#7FFFD4">#7FFFD4</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#7FFFD4">rgb(127, 255, 212)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#F0FFFF">Azure</font></td>
+<td style="text-align:center"><font color="#F0FFFF">#F0FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#F0FFFF">rgb(240, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#F5F5DC">Beige</font></td>
+<td style="text-align:center"><font color="#F5F5DC">#F5F5DC</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#F5F5DC">rgb(245, 245, 220)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#FFE4C4">Bisque</font></td>
+<td style="text-align:center"><font color="#FFE4C4">#FFE4C4</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#FFE4C4">rgb(255, 228, 196)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#000000">Black</font></td>
+<td style="text-align:center"><font color="#000000">#000000</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#000000">rgb(0, 0, 0)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+<tr>
+<td><font color="#00FFFF">Aqua</font></td>
+<td style="text-align:center"><font color="#00FFFF">#00FFFF</font></td>
+<td style="text-align:right"><table><tr><td bgcolor="#00FFFF">rgb(0, 255, 255)</td></tr></table></td>
+</tr>
+</tbody>
+</table>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年10月26日 14:41</p>
+        <p>原始链接： <a class="post-url" href="/2018/10/26/mark-down/" title="Markdown基础语法">http://excu4fun.com/2018/10/26/mark-down/</a></p>
+        <footer>
+            <a href="http://excu4fun.com">
+                <img src="/images/logo.png" alt="Eric Zhang">
+                Eric Zhang
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://excu4fun.com/2018/10/26/mark-down/&title=《Markdown基础语法》 — excu4funEric&pic=/images/photo-1539980032549-3cd0889e4590.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://excu4fun.com/2018/10/26/mark-down/&title=《Markdown基础语法》 — excu4funEric&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://excu4fun.com/2018/10/26/mark-down/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Markdown基础语法》 — excu4funEric&url=http://excu4fun.com/2018/10/26/mark-down/&via=http://excu4fun.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://excu4fun.com/2018/10/26/mark-down/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://excu4fun.com/2018/10/26/mark-down/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Markdown/" class="color4">Markdown</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一、标题"><span class="post-toc-text">一、标题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#这是一级标题"><span class="post-toc-text">这是一级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#这是二级标题"><span class="post-toc-text">这是二级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#这是三级标题"><span class="post-toc-text">这是三级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#这是四级标题"><span class="post-toc-text">这是四级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#这是五级标题"><span class="post-toc-text">这是五级标题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#这是六级标题"><span class="post-toc-text">这是六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#二、字体"><span class="post-toc-text">二、字体</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#·加粗"><span class="post-toc-text">·加粗</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#·斜体"><span class="post-toc-text">·斜体</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#·斜体加粗"><span class="post-toc-text">·斜体加粗</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除线"><span class="post-toc-text">删除线</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#三、引用"><span class="post-toc-text">三、引用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#四、分割线"><span class="post-toc-text">四、分割线</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#五、图片"><span class="post-toc-text">五、图片</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#六、超链接"><span class="post-toc-text">六、超链接</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#七、表格"><span class="post-toc-text">七、表格</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#八、代码"><span class="post-toc-text">八、代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#九、流程图"><span class="post-toc-text">九、流程图</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#十、背景及字体"><span class="post-toc-text">十、背景及字体</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/26/need-book/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">学习新技术真的需要买书吗？</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section id="comments">
+            <div id="disqus_thread">
+                <script type="text/javascript">
+                    var disqus_shortname = 'true';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </section>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 Eric Zhang<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://excu4fun.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/文摘/">文摘</a><a class="category-link" href="/categories/闲话/">闲话</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cocos2d-x/" style="font-size: 10px;">Cocos2d-x</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/文摘/" style="font-size: 10px;">文摘</a> <a href="/tags/闲话/" style="font-size: 10px;">闲话</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cocos2d-x/" style="font-size: 10px;">Cocos2d-x</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/文摘/" style="font-size: 10px;">文摘</a> <a href="/tags/闲话/" style="font-size: 10px;">闲话</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
