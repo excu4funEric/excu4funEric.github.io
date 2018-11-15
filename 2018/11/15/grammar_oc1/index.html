@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Time Or Money | excu4funEric</title>
+  <title>OC笔记（三） | excu4funEric</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="excu4fun,Eric's Blog" />
   
-  <meta name="description" content="原作： J.D.Roth   翻译：翛凌  原文：Entrepreneur 关于作者J. D. Roth 《你的金钱：失落的使用手册》的作者。同时他也是个人金融博客 getrichslowly.org 的创立者和编辑。  &amp;emsp;&amp;emsp;「时间就是金钱，金钱就是时间」。这是 Joe Dominguez 和 Vicki Robin 合著的个人理财经典教程《你的金钱或你的时间》的中心思想。他们">
-<meta name="keywords" content="文摘">
+  <meta name="description" content="Objective-c中 isEqual ，isEqualToString ， == 三者的区别&amp;emsp;&amp;emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址&amp;emsp;&amp;emsp;isEqual 和 isEqualToString 的区别：IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString">
+<meta name="keywords" content="IOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Time Or Money">
-<meta property="og:url" content="http://excu4fun.com/2018/10/22/time-or-money/index.html">
+<meta property="og:title" content="OC笔记（三）">
+<meta property="og:url" content="http://excu4fun.com/2018/11/15/grammar_oc1/index.html">
 <meta property="og:site_name" content="excu4funEric">
-<meta property="og:description" content="原作： J.D.Roth   翻译：翛凌  原文：Entrepreneur 关于作者J. D. Roth 《你的金钱：失落的使用手册》的作者。同时他也是个人金融博客 getrichslowly.org 的创立者和编辑。  &amp;emsp;&amp;emsp;「时间就是金钱，金钱就是时间」。这是 Joe Dominguez 和 Vicki Robin 合著的个人理财经典教程《你的金钱或你的时间》的中心思想。他们">
+<meta property="og:description" content="Objective-c中 isEqual ，isEqualToString ， == 三者的区别&amp;emsp;&amp;emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址&amp;emsp;&amp;emsp;isEqual 和 isEqualToString 的区别：IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-26T12:02:15.981Z">
+<meta property="og:updated_time" content="2018-11-15T12:47:56.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Time Or Money">
-<meta name="twitter:description" content="原作： J.D.Roth   翻译：翛凌  原文：Entrepreneur 关于作者J. D. Roth 《你的金钱：失落的使用手册》的作者。同时他也是个人金融博客 getrichslowly.org 的创立者和编辑。  &amp;emsp;&amp;emsp;「时间就是金钱，金钱就是时间」。这是 Joe Dominguez 和 Vicki Robin 合著的个人理财经典教程《你的金钱或你的时间》的中心思想。他们">
+<meta name="twitter:title" content="OC笔记（三）">
+<meta name="twitter:description" content="Objective-c中 isEqual ，isEqualToString ， == 三者的区别&amp;emsp;&amp;emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址&amp;emsp;&amp;emsp;isEqual 和 isEqualToString 的区别：IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -110,14 +110,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-time-or-money" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-grammar_oc1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      Time Or Money
+      OC笔记（三）
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -125,12 +125,12 @@
               <li>
                   <i class="fa fa-book"></i>
                   
-                      <a href="/categories/文摘/">文摘</a>
+                      <a href="/categories/IOS/">IOS</a>
                   
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2018-10-22
+          <i class="fa fa-calendar"></i>  2018-11-15
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -146,25 +146,13 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>原作： J.D.Roth   翻译：<a href="http://chuang.pro" target="_blank" rel="noopener">翛凌</a>  原文：<a href="https://www.entrepreneur.com/article/234006" target="_blank" rel="noopener">Entrepreneur</a></p>
-<table><tr><td bgcolor="#A9A9A9"><br><font color="#FFFF00" size="6">关于作者</font><br>J. D. Roth 《你的金钱：失落的使用手册》的作者。同时他也是个人金融博客 getrichslowly.org 的创立者和编辑。<br></td></tr></table>
-
-<p>&emsp;&emsp;「时间就是金钱，金钱就是时间」。这是 Joe Dominguez 和 Vicki Robin 合著的个人理财经典教程《你的金钱或你的时间》的中心思想。他们在书中写道，「金钱是我们选择通过耗费我们的能量这样一种方式来换取的东西。」</p>
-<p>&emsp;&emsp;这两位作者的观点主要是这样的：你需要耗费时间才能获得金钱，因此你在买东西时花费的并不是你的金钱，而是你的时间。举例来说，假设你是一个一小时挣 50 美元的顾问，你买了一个价值 500 美元的 iPad。那么这个 iPad 实际上并不是花费了你 500 美元，而是耗费了你 10 小时的工作。如果你一小时只挣 25 美元，那么这个 iPad 实际上是时薪50美元的顾问的两倍，因为你需要工作 20 小时才能支付得起这个 iPad。</p>
-<p>&emsp;&emsp;这种观点实际上有一些有力的实例。当你的花费变少的时候，你实际上可以工作得更少。节俭的人「买下」的时间比不节俭的人要多很多。</p>
-<table><tr><td bgcolor="#A9A9A9"><br><strong>你的时间值多少钱？</strong><br><br>如果你是一个企业家，那么当你的生意越做越大的时候，你的时间也变得更为有价值。实际上你可以用一种非常简单的方式来计算你的时间的价值：假设你一周工作 h 小时，一年有 w 周。将你一整年的全部收入加起来，而后除以将你所有来源的收入加在一起，除以 ( h × w)，这就是你的时间所值的价钱。如果你需要做某件事情，计算一下究竟是你的时间更值钱还是请一个其他人做这个事情耗费的金钱更多。如果你的时间更值钱，那么就请人做这件事情。如果其他人的时间比较值钱，那么你还是自己来做这件事情吧。<br><br></td></tr></table>
-
-<p>&emsp;&emsp;实际上，有些精明的人已经发现了，极度节俭是一条能够让你实现提前退休的好方法。这再你的收入特别高的时尤为明显。如果你在二十多岁和三十多岁的时候能保证每月节省出至少一半甚至 70% 的工资时，你完全可以在 40 岁的时候退休，而不用像一般人一样 65 岁退休。</p>
-<p>&emsp;&emsp;当然我们不可能每个人都适用这样的规律。但是从另一方面来说，金钱也可以买时间。Toni Anderson 又有一个叫做快乐主妇的网站。除了要管理这个逐渐扩大的网站，她还要照顾七个孩子。而她的丈夫，一名海军军官，却并不在她的身边，因此也无法帮助她照料事业和他们的七个孩子。Toni 也因此对时间和金钱之间的关系有着深刻的理解，所以在处理时间和金钱方面的平衡时非常有经验。</p>
-<p>&emsp;&emsp;Toni 雇佣了以为助手去帮助她处理邮件并且帮助她整理生意上的一些细节（比如账单和募捐）。这样 Toni 就可以专注于处理她擅长的事情，也就是维持客户和消费者之间的关系。Toni 表示，「把你讨厌做的事情或者你不擅长做的事情委托给别人做就是其中的关键。」</p>
-<p>&emsp;&emsp;像许多人一样，我花钱请了一个会计帮我管理我的税务问题。这不仅仅是因为他在这方面比我做得好、做得专业，而且还有个很重要的原因就是这只需要耗费他两个小时的时间。而如果要我自己处理这些问题，我可能需要 20 小时。同样，我还请了一个钟点工，每个月来我们家打扫两次房子。是的，请钟点工挺贵。不过这能让我花更多的时间去做那些我更擅长的、能拿到工资的工作。请钟点工能每个月让我多出几小时的空闲时间。而在这几小时内，我写了这篇文章。实际上，这篇文章的稿费够我请她在未来三个月内继续来我们家打扫卫生。</p>
-<p>&emsp;&emsp;当然，在你刚开始一项事业的时候，比起金钱，你可能会拥有更多的时间。因此凡事亲力亲为、参与公司内的各项事务是非常合理的。但是一旦你的事业随着时间的推移逐渐做大，你的时间就会显得越来越少，而你的金钱则变得越来越多。此时花钱请一些员工去处理一些特定事情就变得非常有效。他们能帮助你分担一些你不擅长的工作，而你也能腾出更多时间处理你擅长的工作，获取更多的利润。</p>
-<p>&emsp;&emsp;总结一下，在生活和工作上寻求平衡实际上就是平衡你使用金钱和使用时间的方式。如果买一个 iPad 只耗费你生命中 10 小时或者 20 小时的工作，那么买了 iPad 当然没有什么不可以。如果你需要工作更久的时间工作才能买得起这个 iPad ，那么请不要买这个 iPad 。就当帮自己一个忙：存下来这笔用来买 iPad 的钱。这样你以后就能早点退休，享受自己喜爱的生活了。</p>
+            <h4 id="Objective-c中-isEqual-，isEqualToString-，-三者的区别"><a href="#Objective-c中-isEqual-，isEqualToString-，-三者的区别" class="headerlink" title="Objective-c中 isEqual ，isEqualToString ， == 三者的区别"></a>Objective-c中 isEqual ，isEqualToString ， == 三者的区别</h4><p>&emsp;&emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址<br>&emsp;&emsp;isEqual 和 isEqualToString 的区别：<br>IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString 的方法<br>因此从继承关系角度来说isEqualToString 是 isEqual 的衍生方法<br>首先都会判断 指针是否相等 ，相等直接返回YES，<br>不相等再判断是否是同类对象或非空，空或非同类对象直接返回NO，<br>而后依次判断对象对应的属性是否相等，若均相等，返回YES<br>这样就不难理解 isEqualToString 的实现内部的了<br>最后解释 HashCode 和 isEqual 的关系<br>hash和isEqual:方法都在NSObject协议中声明，且彼此关系紧密。实现hash方法必须返回一个整型数(NSInterger)，作为哈希表结构中的表地址。<br>两个对象相等（isEqual:方法的判断结果）意味着它们有相同的哈希值。如果哈希值相同，两个对象不一定相等。<br>如果您的对象可能被包含在象NSSet这样的集合中，则需要定义hash方法，比如UIWebView<br>并确保该方法在两个对象相等的时候返回相同的哈希值。</p>
+<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">NSString *appleIdStr = @&quot;&quot;;</span><br><span class="line">NSMutableDictionary * params = [NSMutableDictionary dictionary];</span><br><span class="line">  if ([productID isEqualToString:@&quot;hjzd_1_1&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.6&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_2&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.30&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_3&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.98&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_4&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.198&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_5&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.328&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_6&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.648&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  params[@&quot;billing_point_id&quot;] = appleIdStr;</span><br></pre></td></tr></table></figure></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年10月26日 20:02</p>
-        <p>原始链接： <a class="post-url" href="/2018/10/22/time-or-money/" title="Time Or Money">http://excu4fun.com/2018/10/22/time-or-money/</a></p>
+        <p>最后更新： 2018年11月15日 20:47</p>
+        <p>原始链接： <a class="post-url" href="/2018/11/15/grammar_oc1/" title="OC笔记（三）">http://excu4fun.com/2018/11/15/grammar_oc1/</a></p>
         <footer>
             <a href="http://excu4fun.com">
                 <img src="/images/logo.png" alt="Eric Zhang">
@@ -221,7 +209,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://excu4fun.com/2018/10/22/time-or-money/&title=《Time Or Money》 — excu4funEric&pic=/images/time.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://excu4fun.com/2018/11/15/grammar_oc1/&title=《OC笔记（三）》 — excu4funEric&pic=/images/apple2.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -231,22 +219,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://excu4fun.com/2018/10/22/time-or-money/&title=《Time Or Money》 — excu4funEric&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://excu4fun.com/2018/11/15/grammar_oc1/&title=《OC笔记（三）》 — excu4funEric&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://excu4fun.com/2018/10/22/time-or-money/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://excu4fun.com/2018/11/15/grammar_oc1/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Time Or Money》 — excu4funEric&url=http://excu4fun.com/2018/10/22/time-or-money/&via=http://excu4fun.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《OC笔记（三）》 — excu4funEric&url=http://excu4fun.com/2018/11/15/grammar_oc1/&via=http://excu4fun.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://excu4fun.com/2018/10/22/time-or-money/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://excu4fun.com/2018/11/15/grammar_oc1/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -256,7 +244,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://excu4fun.com/2018/10/22/time-or-money/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://excu4fun.com/2018/11/15/grammar_oc1/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -268,7 +256,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/文摘/" class="color3">文摘</a>
+    <a href="/tags/IOS/" class="color4">IOS</a>
       
   </li>
 
@@ -279,22 +267,28 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Objective-c中-isEqual-，isEqualToString-，-三者的区别"><span class="post-toc-text">Objective-c中 isEqual ，isEqualToString ， == 三者的区别</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
-    <a href="/2018/10/26/mark-down/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/15/NSDictionary/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          Markdown基础语法
+          OC笔记（一）
         
       </span>
     </a>
   
   
-    <a href="/2018/10/21/android-obb/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Cocos2d-x3.10使用obb扩展包</span>
+    <a href="/2018/11/15/typeConversion/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">OC笔记（二）</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
