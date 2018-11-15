@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>OC笔记（二） | excu4funEric</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="excu4fun,Eric's Blog" />
+  
+  <meta name="description" content="一、NSString转化为UNICODE String12345(NSString*)fname ＝ @“Test”;char fnameStr[10];memcpy(fnameStr, [fname cStringUsingEncoding:NSUnicodeStringEncoding], 2*([fname length]));//memcpy并不是遇到&amp;apos;\0&amp;apos;就结束，而">
+<meta name="keywords" content="IOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC笔记（二）">
+<meta property="og:url" content="http://excu4fun.com/2018/11/15/typeConversion/index.html">
+<meta property="og:site_name" content="excu4funEric">
+<meta property="og:description" content="一、NSString转化为UNICODE String12345(NSString*)fname ＝ @“Test”;char fnameStr[10];memcpy(fnameStr, [fname cStringUsingEncoding:NSUnicodeStringEncoding], 2*([fname length]));//memcpy并不是遇到&amp;apos;\0&amp;apos;就结束，而">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-15T12:07:12.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC笔记（二）">
+<meta name="twitter:description" content="一、NSString转化为UNICODE String12345(NSString*)fname ＝ @“Test”;char fnameStr[10];memcpy(fnameStr, [fname cStringUsingEncoding:NSUnicodeStringEncoding], 2*([fname length]));//memcpy并不是遇到&amp;apos;\0&amp;apos;就结束，而">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Eric&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Eric&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        记录工作生活中的点滴
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Eric" target="_blank" href="//excu4fun.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/excu4funEric">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/excu4fun?">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-typeConversion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      OC笔记（二）
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/IOS/">IOS</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-11-15
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h4 id="一、NSString转化为UNICODE-String"><a href="#一、NSString转化为UNICODE-String" class="headerlink" title="一、NSString转化为UNICODE String"></a>一、NSString转化为UNICODE String</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(NSString*)fname ＝ @“Test”;</span><br><span class="line">char fnameStr[10];</span><br><span class="line">memcpy(fnameStr, [fname cStringUsingEncoding:NSUnicodeStringEncoding], 2*([fname length]));</span><br><span class="line"></span><br><span class="line">//memcpy并不是遇到&apos;\0&apos;就结束，而是一定会拷贝完n个字节</span><br></pre></td></tr></table></figure>
+<h4 id="二、NSString-与-char-互相转化"><a href="#二、NSString-与-char-互相转化" class="headerlink" title="二、NSString 与 char *互相转化"></a>二、NSString 与 char *互相转化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//NSString 转化为 char *</span><br><span class="line">NSString * str＝ @“Test”;</span><br><span class="line">const char * a =[str UTF8String];</span><br><span class="line"></span><br><span class="line">//char * 转化为 NSString</span><br><span class="line">NSString *str=[NSString stringWithCString  encoding:NSUTF8StringEncoding];</span><br></pre></td></tr></table></figure>
+<h4 id="三、char-与-NSData互相转化"><a href="#三、char-与-NSData互相转化" class="headerlink" title="三、char * 与 NSData互相转化"></a>三、char * 与 NSData互相转化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//char * 转化 NSData方法一：</span><br><span class="line">char * a = (char*)malloc(sizeof(byte)*16);</span><br><span class="line">NSData *data = [NSData dataWithBytes: a   length:strlen(a)];</span><br><span class="line">//char * 转化 NSData方法二：</span><br><span class="line">- (id)initWithUTF8String:(const char *)bytes    //转换为NSString</span><br><span class="line">- (NSData *)dataUsingEncoding:(NSStringEncoding)encoding  // 然后用NSString的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//NSData 转化 char *</span><br><span class="line">NSData data ；</span><br><span class="line">char* a=[data bytes];</span><br></pre></td></tr></table></figure>
+<h4 id="四、NsData-与-NSString互相转化"><a href="#四、NsData-与-NSString互相转化" class="headerlink" title="四、NsData 与 NSString互相转化"></a>四、NsData 与 NSString互相转化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//NSData 转化 NSString</span><br><span class="line">NSData* data;</span><br><span class="line">NSString* aStr= ［NSString alloc] initWithData:data   encoding:NSUTF8StringEncoding];</span><br><span class="line"></span><br><span class="line">//NSString 转化 NSData对象</span><br><span class="line">NSData* xmlData = [@&quot;testdata&quot; dataUsingEncoding:NSUTF8StringEncoding];</span><br></pre></td></tr></table></figure>
+<h4 id="五、-NSString输出CGPoint"><a href="#五、-NSString输出CGPoint" class="headerlink" title="五、 NSString输出CGPoint"></a>五、 NSString输出CGPoint</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UIButton *buttn=[UIButtonbuttonWithType:UIButtonTypeRoundedRect];</span><br><span class="line">buttn.frame=CGRectMake(0, 2, 100, 100);</span><br><span class="line">NSLog(@&quot;===%@&quot;,NSStringFromCGRect(buttn.frame));   //输出CGpoint和CGrect</span><br></pre></td></tr></table></figure>
+<h4 id="六、-中文与utf8相互转换"><a href="#六、-中文与utf8相互转换" class="headerlink" title="六、 中文与utf8相互转换"></a>六、 中文与utf8相互转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSString *str=@&quot;老大-老二&quot;;</span><br><span class="line">NSString *ss=[str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]; //向网络传中文字符串要转换为utf8字符串再传,utf8码也是放在nsstring里的</span><br><span class="line">NSString *str2=[ss stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];   //utf8转换成中文字符串</span><br><span class="line">NSLog(@&quot;%@++\n&quot;,str);</span><br><span class="line">NSLog(@&quot;%@--\n&quot;,ss);</span><br><span class="line">NSLog(@&quot;%@==\n&quot;,str2);</span><br></pre></td></tr></table></figure>
+<h4 id="七、-NSString转换成NSArray"><a href="#七、-NSString转换成NSArray" class="headerlink" title="七、 NSString转换成NSArray"></a>七、 NSString转换成NSArray</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array=[str componentsSeparatedByString:@&quot;-&quot;];</span><br><span class="line">    for (int i=0; i&lt;2; i++) &#123;</span><br><span class="line">        NSLog(@&quot;++%@++\n&quot;,[array objectAtIndex:i]);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="八、-NSString-与-NSURL互相转化"><a href="#八、-NSString-与-NSURL互相转化" class="headerlink" title="八、 NSString 与 NSURL互相转化"></a>八、 NSString 与 NSURL互相转化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//NSString 转化 NSURL  </span><br><span class="line">NSString *urlString=[@&quot;http://www.google.com/search?client=safari&amp;rls=en&amp;q=搜索&amp;ie=UTF-8&amp;oe=UTF-8&quot;</span><br><span class="line">stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">NSURL *url = [NSURL URLWithString:urlString];</span><br><span class="line"></span><br><span class="line">//NSURL 转化 NSString</span><br><span class="line">NSString *s=[[url absoluteString] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">NSArray *arr = [urlString componentsSeparatedByString:@&quot;&amp;&quot;]; </span><br><span class="line">NSURL *url = [NSURL URLWithString:[[arr objectAtIndex:0] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding ]]; </span><br><span class="line">NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url]; </span><br><span class="line">[request setHTTPMethod:@&quot;POST&quot;]; </span><br><span class="line">NSMutableArray *_array = [[NSMutableArray alloc] initWithCapacity:0]; </span><br><span class="line">	for (int i = 1; i &lt; [arr count]; ++i )&#123; </span><br><span class="line">		NSString *str = [arr objectAtIndex:i]; </span><br><span class="line">		[_array addObject:str]; </span><br><span class="line">	&#125; </span><br><span class="line">[_array componentsJoinedByString:@&quot;&amp;&quot;]; </span><br><span class="line">NSData *data = [[_array componentsJoinedByString:@&quot;&amp;&quot;] dataUsingEncoding: NSASCIIStringEncoding]; </span><br><span class="line">[request setHTTPBody:data];</span><br><span class="line">// 发送请求并获得服务器反馈的数据</span><br><span class="line">NSData *urldata = [AESEnCDeCViewController Get:url];</span><br><span class="line"></span><br><span class="line">// 第一种 转换NSData数据到char*字符串</span><br><span class="line">char * test = (char*)[urldata bytes];</span><br><span class="line">std::string old = deaes(test);</span><br><span class="line"></span><br><span class="line">// 第二种 转换NSData到UTF8编码的NSString中再转换为char*字符串</span><br><span class="line">NSString *desStr = [[NSString alloc] initWithData:urldata encoding:NSUTF8StringEncoding];</span><br><span class="line">const char *desresult = [desStr UTF8String];</span><br><span class="line">std::string old = deaes(desresult);  </span><br><span class="line"></span><br><span class="line">// 解密字字符串到明文</span><br><span class="line">NSString *oldstr = [[NSString alloc] initWithCString:old.c_str()];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//很多时候软件读取的中文网页编码集是gb2312，所以显示出来的是乱码。这时需要将NSString文字编码转换</span><br><span class="line">1 NSURL *url = [NSURL URLWithString:urlStr];</span><br><span class="line"></span><br><span class="line">2 NSData *data = [NSData dataWithContentsOfURL:url];    </span><br><span class="line"></span><br><span class="line">3 NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);    </span><br><span class="line"></span><br><span class="line">4 NSString *retStr = [[NSString alloc] initWithData:data encoding:enc];</span><br></pre></td></tr></table></figure>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年11月15日 20:07</p>
+        <p>原始链接： <a class="post-url" href="/2018/11/15/typeConversion/" title="OC笔记（二）">http://excu4fun.com/2018/11/15/typeConversion/</a></p>
+        <footer>
+            <a href="http://excu4fun.com">
+                <img src="/images/logo.png" alt="Eric Zhang">
+                Eric Zhang
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://excu4fun.com/2018/11/15/typeConversion/&title=《OC笔记（二）》 — excu4funEric&pic=/images/apple.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://excu4fun.com/2018/11/15/typeConversion/&title=《OC笔记（二）》 — excu4funEric&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://excu4fun.com/2018/11/15/typeConversion/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《OC笔记（二）》 — excu4funEric&url=http://excu4fun.com/2018/11/15/typeConversion/&via=http://excu4fun.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://excu4fun.com/2018/11/15/typeConversion/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://excu4fun.com/2018/11/15/typeConversion/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/IOS/" class="color4">IOS</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一、NSString转化为UNICODE-String"><span class="post-toc-text">一、NSString转化为UNICODE String</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二、NSString-与-char-互相转化"><span class="post-toc-text">二、NSString 与 char *互相转化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三、char-与-NSData互相转化"><span class="post-toc-text">三、char * 与 NSData互相转化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#四、NsData-与-NSString互相转化"><span class="post-toc-text">四、NsData 与 NSString互相转化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#五、-NSString输出CGPoint"><span class="post-toc-text">五、 NSString输出CGPoint</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#六、-中文与utf8相互转换"><span class="post-toc-text">六、 中文与utf8相互转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#七、-NSString转换成NSArray"><span class="post-toc-text">七、 NSString转换成NSArray</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#八、-NSString-与-NSURL互相转化"><span class="post-toc-text">八、 NSString 与 NSURL互相转化</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/11/15/NSDictionary/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          OC笔记（一）
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/11/01/fight_and_give_up/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Fight When it’s Time to Fight. Be Gracious When It’s Time to Give In.</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <section id="comments">
+            <div id="disqus_thread">
+                <script type="text/javascript">
+                    var disqus_shortname = 'true';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </section>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 Eric Zhang<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://excu4fun.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/IOS/">IOS</a><a class="category-link" href="/categories/Markdown/">Markdown</a><a class="category-link" href="/categories/文摘/">文摘</a><a class="category-link" href="/categories/闲话/">闲话</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cocos2d-x/" style="font-size: 10px;">Cocos2d-x</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/文摘/" style="font-size: 20px;">文摘</a> <a href="/tags/闲话/" style="font-size: 10px;">闲话</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Cocos2d-x/" style="font-size: 10px;">Cocos2d-x</a> <a href="/tags/IOS/" style="font-size: 20px;">IOS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/文摘/" style="font-size: 20px;">文摘</a> <a href="/tags/闲话/" style="font-size: 10px;">闲话</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
