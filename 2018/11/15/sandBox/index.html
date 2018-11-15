@@ -3,23 +3,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>OC笔记（三） | excu4funEric</title>
+  <title>Sandbox沙盒账号支付失败，提示：无法连接到itunes store | excu4funEric</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="excu4fun,Eric's Blog" />
   
-  <meta name="description" content="Objective-c中 isEqual ，isEqualToString ， == 三者的区别&amp;emsp;&amp;emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址&amp;emsp;&amp;emsp;isEqual 和 isEqualToString 的区别：IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString">
+  <meta name="description" content="原文：白马斩辰 沙盒账号测试支付，有时候会遇到无法支付，提示 无法连接到itunes商店。本文将介绍一下解决问题的方法，顺便也会整理一些沙盒账号的相关知识。 1.沙盒账号怎么来的2.如何使用沙盒账号3.无法连接到itunes商店的解决 ———————-1.沙盒账号怎么来的———————- 沙盒账号，是苹果为了方便开发者进行IAP支付测试，而提供的一种账号。使用沙盒账号进行支付时，与真正购买商品是同">
 <meta name="keywords" content="IOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OC笔记（三）">
-<meta property="og:url" content="http://excu4fun.com/2018/11/15/grammar_oc1/index.html">
+<meta property="og:title" content="Sandbox沙盒账号支付失败，提示：无法连接到itunes store">
+<meta property="og:url" content="http://excu4fun.com/2018/11/15/sandBox/index.html">
 <meta property="og:site_name" content="excu4funEric">
-<meta property="og:description" content="Objective-c中 isEqual ，isEqualToString ， == 三者的区别&amp;emsp;&amp;emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址&amp;emsp;&amp;emsp;isEqual 和 isEqualToString 的区别：IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString">
+<meta property="og:description" content="原文：白马斩辰 沙盒账号测试支付，有时候会遇到无法支付，提示 无法连接到itunes商店。本文将介绍一下解决问题的方法，顺便也会整理一些沙盒账号的相关知识。 1.沙盒账号怎么来的2.如何使用沙盒账号3.无法连接到itunes商店的解决 ———————-1.沙盒账号怎么来的———————- 沙盒账号，是苹果为了方便开发者进行IAP支付测试，而提供的一种账号。使用沙盒账号进行支付时，与真正购买商品是同">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-15T12:47:56.317Z">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731202700523">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731202712379">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731202532461">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731204153458">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731204553948">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731205137195">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731205641719">
+<meta property="og:image" content="https://img-blog.csdn.net/20150731205223570">
+<meta property="og:updated_time" content="2018-11-15T13:20:22.188Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OC笔记（三）">
-<meta name="twitter:description" content="Objective-c中 isEqual ，isEqualToString ， == 三者的区别&amp;emsp;&amp;emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址&amp;emsp;&amp;emsp;isEqual 和 isEqualToString 的区别：IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString">
+<meta name="twitter:title" content="Sandbox沙盒账号支付失败，提示：无法连接到itunes store">
+<meta name="twitter:description" content="原文：白马斩辰 沙盒账号测试支付，有时候会遇到无法支付，提示 无法连接到itunes商店。本文将介绍一下解决问题的方法，顺便也会整理一些沙盒账号的相关知识。 1.沙盒账号怎么来的2.如何使用沙盒账号3.无法连接到itunes商店的解决 ———————-1.沙盒账号怎么来的———————- 沙盒账号，是苹果为了方便开发者进行IAP支付测试，而提供的一种账号。使用沙盒账号进行支付时，与真正购买商品是同">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20150731202700523">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -110,14 +119,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-grammar_oc1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-sandBox" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      OC笔记（三）
+      Sandbox沙盒账号支付失败，提示：无法连接到itunes store
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -146,13 +155,30 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h4 id="Objective-c中-isEqual-，isEqualToString-，-三者的区别"><a href="#Objective-c中-isEqual-，isEqualToString-，-三者的区别" class="headerlink" title="Objective-c中 isEqual ，isEqualToString ， == 三者的区别"></a>Objective-c中 isEqual ，isEqualToString ， == 三者的区别</h4><p>&emsp;&emsp;OC中的对象都是用指针表示，方法的调用是基于消息机制实现，== 比较的自然是指针指向的地址<br>&emsp;&emsp;isEqual 和 isEqualToString 的区别：<br>IsEqual 是 NSObject 的方法 ，而 isEqualToString 是 NSString 的方法<br>因此从继承关系角度来说isEqualToString 是 isEqual 的衍生方法<br>首先都会判断 指针是否相等 ，相等直接返回YES，<br>不相等再判断是否是同类对象或非空，空或非同类对象直接返回NO，<br>而后依次判断对象对应的属性是否相等，若均相等，返回YES<br>这样就不难理解 isEqualToString 的实现内部的了<br>最后解释 HashCode 和 isEqual 的关系<br>hash和isEqual:方法都在NSObject协议中声明，且彼此关系紧密。实现hash方法必须返回一个整型数(NSInterger)，作为哈希表结构中的表地址。<br>两个对象相等（isEqual:方法的判断结果）意味着它们有相同的哈希值。如果哈希值相同，两个对象不一定相等。<br>如果您的对象可能被包含在象NSSet这样的集合中，则需要定义hash方法，比如UIWebView<br>并确保该方法在两个对象相等的时候返回相同的哈希值。</p>
-<p>举个栗子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">NSString *appleIdStr = @&quot;&quot;;</span><br><span class="line">NSMutableDictionary * params = [NSMutableDictionary dictionary];</span><br><span class="line">  if ([productID isEqualToString:@&quot;hjzd_1_1&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.6&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_2&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.30&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_3&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.98&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_4&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.198&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_5&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.328&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  else if([productID isEqualToString:@&quot;hjzd_1_6&quot;])&#123;</span><br><span class="line">      appleIdStr = @&quot;com.xys.648&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  params[@&quot;billing_point_id&quot;] = appleIdStr;</span><br></pre></td></tr></table></figure></p>
+            <p>原文：<a href="https://blog.csdn.net/imanapple/article/details/47174993" target="_blank" rel="noopener">白马斩辰</a></p>
+<p>沙盒账号测试支付，有时候会遇到无法支付，提示 无法连接到itunes商店。本文将介绍一下解决问题的方法，顺便也会整理一些沙盒账号的相关知识。</p>
+<p>1.沙盒账号怎么来的<br>2.如何使用沙盒账号<br>3.无法连接到itunes商店的解决</p>
+<p>———————-1.沙盒账号怎么来的———————-</p>
+<p>沙盒账号，是苹果为了方便开发者进行IAP支付测试，而提供的一种账号。<br>使用沙盒账号进行支付时，与真正购买商品是同样的流程，因此可以用来验证整个IAP支付流程。<br>沙盒账号在<a href="https://itunesconnect.apple.com/" target="_blank" rel="noopener">苹果后台</a>添加<br><img src="https://img-blog.csdn.net/20150731202700523" alt="setRole"><br><img src="https://img-blog.csdn.net/20150731202712379" alt="setRoleT"></p>
+<p>添加沙盒账号时，输入一个邮箱，创建一个支付密码。<br>注意：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.如果你的应用限定在某些国家发售，那么沙盒账号注意选择正确的国别。</span><br><span class="line">2.沙盒账号不要用已有的appstore账号</span><br><span class="line">3.沙盒账号可以是不存在的邮箱，只要格式正确即可，例如 1@qq.com</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://img-blog.csdn.net/20150731202532461" alt="setRoleS"></p>
+<p>———————2.如何使用沙盒账号—————————-</p>
+<p>要使用沙盒账号进行测试，首先要配置IAP商品，保证客户端provisioning证书正确。</p>
+<p>如果你需要服务器进行三方验证，那么还要搭建好服务器。<br>注意：沙盒账号支付时，连接到苹果接口是不同的，对比一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://sandbox.itunes.apple.com/verifyReceipt   沙盒订单验证接口</span><br><span class="line">https://buy.itunes.apple.com/verifyReceipt    正式订单验证接口</span><br></pre></td></tr></table></figure></p>
+<p>一切准备就绪后，在客户端点击商品，输入沙盒账号密码进行购买，购买成功则说明整个流程正确。</p>
+<p>———————-3.无法连接到itunes商店的解决————————–<br>客户端进行sandbox测试时，经常遇到提示 “无法连接到itunes store”<br><img src="https://img-blog.csdn.net/20150731204153458" alt="setRoleF"><br>这里列举一下不同原因，以及解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.购买商品时，Product ID写错了</span><br><span class="line">  解决方法：测试时打印出日志，注意查看Product ID是否正确</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://img-blog.csdn.net/20150731204553948" alt="setRoleFT"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2.证书配置错误</span><br><span class="line">  解决方法：App ID中，一定要打开IAP的Development配置</span><br><span class="line">  一定要用Development类型的证书，且一定要在App ID设置后才生成证书</span><br></pre></td></tr></table></figure>
+<p>![setRoleST][<a href="https://img-blog.csdn.net/20150731204849023]" target="_blank" rel="noopener">https://img-blog.csdn.net/20150731204849023]</a><br><img src="https://img-blog.csdn.net/20150731205137195" alt="setRoleSTT"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3.沙盒账号使用错误</span><br><span class="line">  解决方法：正确使用沙盒账号。</span><br><span class="line">  a.请确保你使用的是沙盒账号，而不是appstore的账号。这个问题很常见</span><br><span class="line">  b.如果设备上已经登录了appstore账号，在设置中注销。</span><br><span class="line">  c.在你的应用中点击购买商品，弹出框内输入沙盒账号、密码</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdn.net/20150731205641719" alt="setRoleE"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4.网络不好</span><br><span class="line"> 解决方法：切换一下网络，wifi、4g等都试试。</span><br><span class="line"> 苹果服务器在国内确实不稳定，如果总是不OK，那就隔天再测吧</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdn.net/20150731205223570" alt="setRoleN"></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年11月15日 20:47</p>
-        <p>原始链接： <a class="post-url" href="/2018/11/15/grammar_oc1/" title="OC笔记（三）">http://excu4fun.com/2018/11/15/grammar_oc1/</a></p>
+        <p>最后更新： 2018年11月15日 21:20</p>
+        <p>原始链接： <a class="post-url" href="/2018/11/15/sandBox/" title="Sandbox沙盒账号支付失败，提示：无法连接到itunes store">http://excu4fun.com/2018/11/15/sandBox/</a></p>
         <footer>
             <a href="http://excu4fun.com">
                 <img src="/images/logo.png" alt="Eric Zhang">
@@ -209,7 +235,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://excu4fun.com/2018/11/15/grammar_oc1/&title=《OC笔记（三）》 — excu4funEric&pic=/images/apple2.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://excu4fun.com/2018/11/15/sandBox/&title=《Sandbox沙盒账号支付失败，提示：无法连接到itunes store》 — excu4funEric&pic=/images/apple3.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -219,22 +245,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://excu4fun.com/2018/11/15/grammar_oc1/&title=《OC笔记（三）》 — excu4funEric&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://excu4fun.com/2018/11/15/sandBox/&title=《Sandbox沙盒账号支付失败，提示：无法连接到itunes store》 — excu4funEric&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://excu4fun.com/2018/11/15/grammar_oc1/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://excu4fun.com/2018/11/15/sandBox/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《OC笔记（三）》 — excu4funEric&url=http://excu4fun.com/2018/11/15/grammar_oc1/&via=http://excu4fun.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Sandbox沙盒账号支付失败，提示：无法连接到itunes store》 — excu4funEric&url=http://excu4fun.com/2018/11/15/sandBox/&via=http://excu4fun.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://excu4fun.com/2018/11/15/grammar_oc1/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://excu4fun.com/2018/11/15/sandBox/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -244,7 +270,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://excu4fun.com/2018/11/15/grammar_oc1/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://excu4fun.com/2018/11/15/sandBox/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -267,28 +293,22 @@
 </article>
 
 
-    <aside class="post-toc-pos post-toc-top" id="post-toc">
-        <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Objective-c中-isEqual-，isEqualToString-，-三者的区别"><span class="post-toc-text">Objective-c中 isEqual ，isEqualToString ， == 三者的区别</span></a></li></ol>
-        </nav>
-    </aside>
-    
 
 <nav id="article-nav">
   
-    <a href="/2018/11/15/NSDictionary/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/15/grammar_oc1/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          OC笔记（一）
+          OC笔记（三）
         
       </span>
     </a>
   
   
-    <a href="/2018/11/15/sandBox/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Sandbox沙盒账号支付失败，提示：无法连接到itunes store</span>
+    <a href="/2018/11/15/typeConversion/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">OC笔记（二）</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
